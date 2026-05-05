@@ -1,0 +1,112 @@
+
+    .hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.bg-video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+.hero-content {
+    height: 100%;
+}
+.custom-container {
+    margin-top: -70px;
+}
+#DoneByYuri{
+    color: white;
+    font-weight: bold;
+}
+.SendBtn{
+    background-color: #ff5733;
+    color: white;
+    font-size: 20px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+
+}
+.box {
+    font-weight: bold;
+    font-size: 50px;
+    color: #DEB887;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-shadow:2px 2px 5px black;
+}
+.GoToForm{
+    color:whitesmoke;
+    background-color: #DEB887;
+}
+.image-card {
+    background: #f5f7fa;
+    padding: 15px;
+    border-radius: 20px;
+   
+    display: inline-block;
+}
+.Sections{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    font-size: 30px;
+}
+.Form{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+.my-textarea {
+    width: 700px;
+    height: 150px;
+    padding: 10px;
+    border-radius: 8px;
+}
+.image-card img {
+    border-radius: 15px;
+}
+#TitleNextImage{
+    font-size: 40px;
+    font-weight: bold;
+}
+.TextNextToImage{
+    padding-right: 50px;
+}
+#Headline{
+    font-size: larger;
+    font-weight: bold;
+    height: 70px;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows:300 300;
+    gap: 15px;
+    padding: 20px;
+     margin: 40px auto;
+     max-width: 1200px;
+     width: 1000px;
+     height: 500px;
+
+}
+
+.item {
+    background-color: white;
+    color: darkblue;
+    padding: 50px;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;    
+    text-align: center;   
+    border-radius: 20px;
+}
+.ImpactH1{
+    color: white;
+    text-align: center;
+
+}

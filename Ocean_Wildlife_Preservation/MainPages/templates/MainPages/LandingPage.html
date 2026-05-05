@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LandingPage</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'MainPages/css/style.css'%}">
+
+
+
+</head>
+<body>
+    <div class="hero">
+    <video autoplay muted loop class="bg-video">
+        <source src="{% static 'MainPages/images/seaVideo.mp4' %}" type="video/mp4">
+    </video>
+
+    <div class="container d-flex align-items-center hero-content">
+        <div class="d-flex flex-column align-items-start">
+            <div class="box">Ocean Wildlife Preservation</div>
+            <p id="DoneByYuri">Done by Yuri Hadid</p>
+            <div><button class="btn btn-secondary mt-3 GoToForm">Go To form</button></div>
+        </div>
+    </div>
+</div>
+
+    
+<div class="Sections"><p>About</p></div>
+        
+
+
+
+
+<div class=" d-flex align-items-center">
+
+    <div class="container2">
+        <div class="row align-items-start">
+
+            <!-- LEFT TEXT -->
+            <div class="col-12 col-md-6 TextNextToImage">
+                <p id="TitleNextImage">Ocean wildlife preservation</p>
+                <p>is the effort to protect and restore marine ecosystems and the species that depend on them. Oceans are home to an incredible diversity of life, from tiny plankton to massive whales, and they play a vital role in maintaining Earth’s balance by producing oxygen, regulating climate, and supporting global food chains. However, marine life is increasingly threatened by pollution, overfishing, habitat destruction, and climate change. Conservation efforts focus on reducing plastic waste, protecting endangered species, establishing marine protected areas, and promoting sustainable fishing practices. By preserving ocean wildlife, we help ensure healthier oceans for future generations and maintain the stability of the planet’s natural systems. </p>
+            </div>
+
+            <!-- RIGHT IMAGE -->
+            <div class="col-12 col-md-6 text-center">
+                <div class="image-card">
+                    <img src="{% static 'MainPages/images/OceanImage.jpg' %}" class="img-fluid">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div style="background-color: darkblue;">
+<h1 class="ImpactH1">Our Impact</h1>
+<div class="grid-container">
+<div class="item"> <strong> 55</strong> <br> Cleanup Campaigns</div>
+<div class="item"> <strong>  300K</strong> <br> Pieces Of Waste Removed</div>
+<div class="item"><strong>15 Tons </strong> <br> Total Weight Of Waste</div>
+<div class="item"> <strong> 60% </strong><br> Of Total Waste Is Plastic</div>
+<div class="item"><strong> 500 </strong><br>Volunteers United For Change </div>
+<div class="item"><strong> 60 </strong> <br> Nationalities Working Together</div>
+</div>
+</div>
+    
+<div class="Sections"><p>Form</P></div>
+
+<div class="Form">
+    <form method="POST"  action="{% url 'get_info' %}">
+        {% csrf_token %}
+    <div class="mb-3">
+        <label>Name:</label>
+        <input type="text" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1 " name="name">
+    </div>
+    <div class="mb-3">
+        <label>Email:</label>
+        <input type="text" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1" name="email">
+    </div>
+    <div class="mb-3">
+        <label id="MessageTxt">Message:</label>
+        <br>
+        <textarea class="my-textarea" placeholder="Write here... " name="message"></textarea>
+    </div>
+        <button type="submit" class="SendBtn">Send</button>
+</form>
+
+
+
+
+</div>
+
+
+
+</body>
+</html>

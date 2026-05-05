@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Home3</title>
+	</head>
+	<body>
+		<h1>this is the second page</h1>
+            <table border =1>
+            <tr>
+                <th>name</th>
+                <th>email</th>
+                <th>message</th>
+            </tr>
+            {% for students in student %}
+            <tr>
+                <td>{{students.name}}</td>
+                <td>{{students.email}}</td>
+                <td>{{students.message}}</td>
+            </tr>
+
+            {% endfor %}
+
+            </table>
+
+
+
+            
+
+        
+	</body>
+</html>
