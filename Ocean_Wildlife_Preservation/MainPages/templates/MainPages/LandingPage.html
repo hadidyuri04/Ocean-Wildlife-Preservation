@@ -100,29 +100,39 @@
         <div class="Sections "><p>Form</P></div>
             
 
-        <div class="Form">
-            <form method="POST"  action="{% url 'get_info' %}">
+        <div class="Form" i>
+            <form method="POST"  action="{% url 'get_info' %}" id="mainForm">
                 {% csrf_token %}
                 <div class="row">
             <div class="col-md-6 col-12">
                 <label>Name:</label>
-                <input type="text" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1 " name="name">
+                <input type="text" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1 " name="name" id="inputName">
                 </div>
                 <div class="col-md-6 col-12">
                 <label>Email:</label>
-                <input type="text" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1" name="email">
+                <input type="text" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1" name="email" id="inputEmail">
             </div>
             </div>
             <div class="mb-3">
                 <label id="MessageTxt">Message:</label>
                 <br>
-                <textarea class="my-textarea" placeholder="Write here... " name="message"></textarea>
+                <textarea id="textArea" class="my-textarea" placeholder="Write here... " name="message"></textarea>
             </div>
-                <button type="submit" class="SendBtn">Send</button>
+                <button type="submit" class="SendBtn" id="SubmitBtn">Send</button>
         </form>
         </div>
     </div>
     </div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="formToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header" id="toastHeader">
+      <strong class="me-auto" id="toastTitle">Notification</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body" id="toastBody">
+      </div>
+  </div>
+</div>
 
 
 
@@ -138,6 +148,44 @@
     const AddHeader=document.getElementById('AddHeader');
     const VidSec=document.getElementById('VidSec');
     const AddHeaderHere=document.getElementById('AddHeaderHere');
+    const SubmitBtn=document.getElementById('SubmitBtn');
+    const inputName=document.getElementById('inputName');
+    const inputEmail=document.getElementById('inputEmail');
+    const textArea=document.getElementById('textArea');
+    const toastEl=document.getElementById('formToast');
+    const toastTitle=document.getElementById('toastTitle');
+    const toastBody=document.getElementById('toastBody');
+    const toastHeader=document.getElementById('toastHeader');
+
+
+
+    SubmitBtn.addEventListener('click',function(event)
+{
+    event.preventDefault();
+    let missingFields=[];
+    if(!inputName.value.trim()) missingFields.push("Name");
+    if(!inputEmail.value.trim()) missingFields.push("Email");
+    if(!textArea.value.trim()) missingFields.push("textAreaa");
+    const bsToast = new bootstrap.Toast(toastEl);
+    if(missingFields.length==0)
+{
+    toastTitle.innerText="Success"
+    toastTitle.style.color="green"
+    bsToast.show();
+    setTimeout(()=>
+{
+    console.log("Button clicked!");
+    document.getElementById('mainForm').submit();
+},1500);
+}
+else{
+    toastTitle.innerText="failed"
+    toastTitle.style.color="red"
+     toastTitle.innerText="the "+ missingFields.join(", ") +" is missing";
+    bsToast.show();
+
+}
+})
 
      AddHeader.addEventListener('click', function()
     {

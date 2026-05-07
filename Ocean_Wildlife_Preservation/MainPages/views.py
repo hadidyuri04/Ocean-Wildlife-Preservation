@@ -18,6 +18,7 @@ def blogs(request):
     return render(request,'MainPages/blogs.html')
 def PrivatePolicy(request):
     return render(request,'MainPages/PrivatePolicy.html')
+
 def GetInformation(request):
     if request.method =='POST':
         print(" hello")
@@ -28,6 +29,7 @@ def GetInformation(request):
             file.write(f"{name},{email},{message}\n")
         return redirect("home")
     return render(request,'MainPages/LandingPage.html')
+
 def AdminPageInfo(request):
     Student=[]
     with open(r"C:\Users\Administrator\Desktop\informationTxt.txt","r") as file:
@@ -43,9 +45,60 @@ def PrintPrivatePolicy(request):
          file_content=file.read()
     return render(request,'MainPages/PrivatePolicy.html',{'content': file_content})
 def Blog1Page(request):
-    return render(request, 'MainPages/Blog1Page.html')
+    file_path = os.path.join(settings.BASE_DIR, 'MainPages', 'static', 'MainPages', 'content', 'Blog1Page.txt')
+    with open(file_path,'r') as file:
+        lines=file.readlines()
+        blog_image=lines[0].strip()
+        blog_title=lines[1].strip()
+        blog_category=lines[2].strip()
+        blog_cancept=lines[3].strip()
+        blog_body= "".join(lines[4:])
+    context={
+        'image':blog_image,
+        'title':blog_title,
+        'category':blog_category,
+        'concept':blog_cancept,
+        'body':blog_body
+
+    }
+    return render(request, 'MainPages/Blog1Page.html', context)
+
+
+    
 def Blog2Page(request):
-    return render(request, 'MainPages/Blog2Page.html')
+    file_path = os.path.join(settings.BASE_DIR, 'MainPages', 'static', 'MainPages', 'content', 'Blog2Page.txt')
+    with open(file_path,'r') as file:
+        lines=file.readlines()
+        blog_image=lines[0].strip()
+        blog_title=lines[1].strip()
+        blog_category=lines[2].strip()
+        blog_cancept=lines[3].strip()
+        blog_body= "".join(lines[4:])
+    context={
+        'image':blog_image,
+        'title':blog_title,
+        'category':blog_category,
+        'concept':blog_cancept,
+        'body':blog_body
+
+    }
+    return render(request, 'MainPages/Blog2Page.html', context)
 def Blog3Page(request):
-    return render(request, 'MainPages/Blog3Page.html')
+    file_path = os.path.join(settings.BASE_DIR, 'MainPages', 'static', 'MainPages', 'content', 'Blog3Page.txt')
+    with open(file_path,'r') as file:
+        lines=file.readlines()
+        blog_image=lines[0].strip()
+        blog_title=lines[1].strip()
+        blog_category=lines[2].strip()
+        blog_cancept=lines[3].strip()
+        blog_body= "".join(lines[4:])
+    context={
+        'image':blog_image,
+        'title':blog_title,
+        'category':blog_category,
+        'concept':blog_cancept,
+        'body':blog_body
+
+    }
+    return render(request, 'MainPages/Blog3Page.html', context)
               
