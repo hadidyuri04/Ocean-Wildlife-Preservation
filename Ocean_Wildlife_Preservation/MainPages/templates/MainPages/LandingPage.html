@@ -1,33 +1,40 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>LandingPage</title>
+ {%extends "MainPages/base.html" %}
+ {% load static %}
+ {% block title %}
+ LandingPage
+{% endblock %} 
+{% block content %}
+ <div class="hero" id="VidSec">
+        <div class="col-sm-1">
+            <video autoplay muted loop class="bg-video">
+                <source src="{% static 'MainPages/images/seaVideo.mp4' %}" type="video/mp4">
+            </video>
+        </div>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{% static 'MainPages/css/style.css'%}">
+        <div class="container d-flex align-items-center hero-content">
+            <div class="row">
+            <div class=" col-md-6 d-flex flex-column align-items-start">
+                <div class="box">Ocean Wildlife Preservation</div>
+                <p id="DoneByYuri">Done by Yuri Hadid</p>
+                <a href="#form-section">
+                    <button class="btn btn-secondary mt-3 GoToForm">Go To form</button>
+                </a>
+            </div>
+            <div id="AddHeaderHere" class="col-md-6 box">
+
+            </div>
 
 
 
-</head>
-<body>
-    <div class="hero">
-    <video autoplay muted loop class="bg-video">
-        <source src="{% static 'MainPages/images/seaVideo.mp4' %}" type="video/mp4">
-    </video>
-
-    <div class="container d-flex align-items-center hero-content">
-        <div class="d-flex flex-column align-items-start">
-            <div class="box">Ocean Wildlife Preservation</div>
-            <p id="DoneByYuri">Done by Yuri Hadid</p>
-            <div><button class="btn btn-secondary mt-3 GoToForm">Go To form</button></div>
+            </div>
         </div>
     </div>
-</div>
+    <br>
+    <br>
+    <button type="submit" class="SendBtn" id="AddHeader">Add a header</button>
 
-    
-<div class="Sections"><p>About</p></div>
+<div id="AboutSec">
+<div class="Sections" ><p>About</p></div>
         
 
 
@@ -55,46 +62,121 @@
     </div>
 
 </div>
+</div>
+<br>
+<br>
+<button type="submit" class="SendBtn" id="InvisibleBtn">make It Invisible</button>
 
-<div style="background-color: darkblue;">
-<h1 class="ImpactH1">Our Impact</h1>
-<div class="grid-container">
-<div class="item"> <strong> 55</strong> <br> Cleanup Campaigns</div>
-<div class="item"> <strong>  300K</strong> <br> Pieces Of Waste Removed</div>
-<div class="item"><strong>15 Tons </strong> <br> Total Weight Of Waste</div>
-<div class="item"> <strong> 60% </strong><br> Of Total Waste Is Plastic</div>
-<div class="item"><strong> 500 </strong><br>Volunteers United For Change </div>
-<div class="item"><strong> 60 </strong> <br> Nationalities Working Together</div>
-</div>
-</div>
+
+<h1 class=" container ImpactH1">Our Impact</h1>
+<div class="row g-4 justify-content-center" id="Gridd">
+    {% for item in impact_items %}
+    <div class="col-md-4">
+        <div class="item">
+             <strong>{{item.value}}</strong>
+             <br>
+             {{item.label }}
+        </div>
+    </div>
+    {% endfor%}
     
-<div class="Sections"><p>Form</P></div>
 
-<div class="Form">
-    <form method="POST"  action="{% url 'get_info' %}">
-        {% csrf_token %}
-    <div class="mb-3">
-        <label>Name:</label>
-        <input type="text" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1 " name="name">
+    
+</div>
+<br>
+<br>
+
+<div>
+    <label for="colorPicker">Choose a Theme Color:</label>
+    <input type="color" id="ColorPicker">
+    <button type="submit" class="SendBtn" id="ChangeColorBtn">Change Color</button>
+</div>
+<br>
+<br>
+
+    <div class="row justify-content-center" id="form-section">
+        <div class="col-12 col-md-11 col-lg-10">
+            <div class="form-card">
+        <div class="Sections "><p>Form</P></div>
+            
+
+        <div class="Form">
+            <form method="POST"  action="{% url 'get_info' %}">
+                {% csrf_token %}
+                <div class="row">
+            <div class="col-md-6 col-12">
+                <label>Name:</label>
+                <input type="text" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1 " name="name">
+                </div>
+                <div class="col-md-6 col-12">
+                <label>Email:</label>
+                <input type="text" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1" name="email">
+            </div>
+            </div>
+            <div class="mb-3">
+                <label id="MessageTxt">Message:</label>
+                <br>
+                <textarea class="my-textarea" placeholder="Write here... " name="message"></textarea>
+            </div>
+                <button type="submit" class="SendBtn">Send</button>
+        </form>
+        </div>
     </div>
-    <div class="mb-3">
-        <label>Email:</label>
-        <input type="text" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1" name="email">
     </div>
-    <div class="mb-3">
-        <label id="MessageTxt">Message:</label>
-        <br>
-        <textarea class="my-textarea" placeholder="Write here... " name="message"></textarea>
-    </div>
-        <button type="submit" class="SendBtn">Send</button>
-</form>
 
 
 
 
 </div>
+<script>
+    const colorPicker=document.getElementById('ColorPicker');
+    const changeColorButton=document.getElementById('ChangeColorBtn');
+    const gridContainer= document.getElementById('Gridd');
+    const gridItems=document.getElementsByClassName('item');
+    const InvisibleBtn=document.getElementById('InvisibleBtn');
+    const AboutSec=document.getElementById("AboutSec");
+    const AddHeader=document.getElementById('AddHeader');
+    const VidSec=document.getElementById('VidSec');
+    const AddHeaderHere=document.getElementById('AddHeaderHere');
+
+     AddHeader.addEventListener('click', function()
+    {
+        const NewHeader=document.createElement('h2');
+        NewHeader.innerText="this is a new header"
+        AddHeaderHere.appendChild(NewHeader);
+
+    })
 
 
+    InvisibleBtn.addEventListener('click', function()
+{
+    if(AboutSec.style.display=='none')
+{
+    AboutSec.style.display='block';
+    InvisibleBtn.innerText=' make it Invisible';
 
-</body>
-</html>
+}else{
+    AboutSec.style.display='none';
+    InvisibleBtn.innerText=' make it Visible';
+}
+
+})
+
+    
+    colorPicker.addEventListener('input',function()
+{
+    const newColor=colorPicker.value;
+    changeColorButton.style.backgroundColor=newColor;
+})
+
+    changeColorButton.addEventListener('click',function()
+{
+    const newColor=colorPicker.value;
+    for(var i=0;i<gridItems.length;i++)
+    {
+        gridItems[i].style.backgroundColor=newColor;
+    }
+})
+</script>
+
+{% endblock %}

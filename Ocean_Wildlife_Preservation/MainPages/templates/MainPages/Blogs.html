@@ -1,0 +1,37 @@
+ {%extends "MainPages/base.html" %}
+ {% load static %}
+ {% block title %}
+ Blogs
+{% endblock %} 
+{% block content %}
+<h1>Blogs</h1>
+<hr>
+<div class="row">
+    
+    <div class=" col-md-4 col-12 BlogImages" style="height: 500px;">
+        <a href="{% url 'Blog1Page' %}">
+        <img src="{% static 'MainPages/images/Blog1.jpg' %}">
+        <div style="color: black; text-decoration: none;"><strong>The Great Blue Carbon Sink: Mangroves and Seagrass</strong></div>
+        </a>
+
+    </div>
+    
+    <div class=" col-md-4 BlogImages">
+        <a href="{% url 'Blog2Page' %}">
+        <img src="{% static 'MainPages/images/Blog2.jpg' %}">
+        <div style="color: black; text-decoration: none;"><strong> Gear: The Silent Killer of the Deep</strong></div>
+        </a>
+
+    </div>
+    <div class=" col-md-4 BlogImages">
+        <a href="{% url 'Blog3Page' %}">
+        <img src="{% static 'MainPages/images/Blog3.jpg' %}">
+        <div style="color: black; text-decoration: none;"><strong>The Coral Resiliency Project: Engineering Survival</strong></div>
+        </a>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

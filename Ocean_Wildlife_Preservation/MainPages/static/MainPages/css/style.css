@@ -1,19 +1,32 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; 
+    display: block;
+}
 
-    .hero {
+.hero {
     position: relative;
     height: 100vh;
+    width: 100%;
     overflow: hidden;
+   
 }
 
 .bg-video {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: -1;
+    z-index: 1;
 }
 .hero-content {
     height: 100%;
+    position: relative;
+    z-index: 2;
 }
 .custom-container {
     margin-top: -70px;
@@ -23,7 +36,7 @@
     font-weight: bold;
 }
 .SendBtn{
-    background-color: #ff5733;
+    background-color: darkblue;
     color: white;
     font-size: 20px;
     padding: 15px 30px;
@@ -59,9 +72,11 @@
     display: flex;
     justify-content: center;
     padding: 20px;
+  
 }
 .my-textarea {
-    width: 700px;
+    width: 100%;
+    max-width: 700px;
     height: 150px;
     padding: 10px;
     border-radius: 8px;
@@ -81,32 +96,56 @@
     font-weight: bold;
     height: 70px;
 }
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows:300 300;
-    gap: 15px;
-    padding: 20px;
-     margin: 40px auto;
-     max-width: 1200px;
-     width: 1000px;
-     height: 500px;
 
-}
 
 .item {
-    background-color: white;
-    color: darkblue;
+    background-color: darkblue;
+    color: white;
     padding: 50px;
     display: flex;
     flex-direction: column; 
     justify-content: center; 
     align-items: center;    
     text-align: center;   
-    border-radius: 20px;
+    border-radius: 10px;
+    border: 1px solid darkblue;
+    
 }
 .ImpactH1{
     color: white;
     text-align: center;
 
+}
+.form-card{
+    background-color: white;
+    padding: 5% 7%;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0);
+    border: 1px solid darkblue;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+
+}
+.BlogImages{
+    height: 300px; 
+    width: 100%;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    background-position: center;
+    background-color: #87CEEB;
+    
+}
+.BlogImages a{
+    text-decoration: none;
+    color: black;
+}
+.ImagesInBlogPages{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
 }
